@@ -38,7 +38,9 @@ export class DataStore implements DataStoreMethods {
       .filter(isDefined);
   }
   getAllMovies(): Movie[] {
-    return [];
+    return Object.keys(this.#data.movie)
+      .map((songKey) => this.#data.movie[songKey])
+      .filter(isDefined);
   }
   getSong(id: string): Song {
     return { singer: '', id };
