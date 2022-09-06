@@ -23,22 +23,28 @@ type DataStoreMethods = {
   [K in keyof DataEntityMap as `clearAll${Capitalize<K>}s`]: () => void;
 };
 
+function isDefined<T>(val: T | undefined): val is T {
+  return typeof val !== 'undefined';
+}
+
 export class DataStore implements DataStoreMethods {
   #data: { [K in keyof DataEntityMap]: Record<string, DataEntityMap[K]> } = {
     movie: {},
     song: {},
   };
   getAllSongs(): Song[] {
-    return [];
+    return Object.keys(this.#data.song)
+      .map((songKey) => this.#data.song[songKey])
+      .filter(isDefined);
   }
   getAllMovies(): Movie[] {
     return [];
   }
   getSong(id: string): Song {
-    return { singer: "", id };
+    return { singer: '', id };
   }
   getMovie(id: string): Movie {
-    return { director: "", id };
+    return { director: '', id };
   }
   clearAllSongs(): void {}
   clearAllMovies(): void {}
