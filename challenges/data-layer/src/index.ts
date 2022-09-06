@@ -64,10 +64,10 @@ export class DataStore implements DataStoreMethods {
     this.#data.movie = { [movie.id]: movie };
     return movie;
   }
-  clearAllSongs(): void {
+  clearSongs(): void {
     this.#data.song = {};
   }
-  clearAllMovies(): void {
+  clearMovies(): void {
     this.#data.movie = {};
   }
 }
