@@ -20,7 +20,7 @@ type DataStoreMethods = {
     id: string
   ) => DataEntityMap[K];
 } & {
-  [K in keyof DataEntityMap as `clearAll${Capitalize<K>}s`]: () => void;
+  [K in keyof DataEntityMap as `clear${Capitalize<K>}s`]: () => void;
 } & {
   [K in keyof DataEntityMap as `add${Capitalize<K>}`]: (
     item: DataEntityMap[K]
