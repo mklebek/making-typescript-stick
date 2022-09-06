@@ -48,7 +48,9 @@ export class DataStore implements DataStoreMethods {
     return song;
   }
   getMovie(id: string): Movie {
-    return { director: '', id };
+    const movie = this.#data.movie[id];
+    if (!movie) throw new Error(`Movie not found: ${id}`);
+    return movie;
   }
   clearAllSongs(): void {}
   clearAllMovies(): void {}
