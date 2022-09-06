@@ -71,5 +71,3 @@ export class DataStore implements DataStoreMethods {
     this.#data.movie = {};
   }
 }
-
-const ds = new DataStore();
